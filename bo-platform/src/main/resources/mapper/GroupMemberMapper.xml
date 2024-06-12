@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.james.platform.mapper.GroupMemberMapper">
+  <resultMap id="BaseResultMap" type="com.james.platform.pojo.entity.GroupMember">
+    <!--@mbg.generated-->
+    <!--@Table t_group_member-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="group_id" jdbcType="BIGINT" property="groupId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="alias_name" jdbcType="VARCHAR" property="aliasName" />
+    <result column="head_image" jdbcType="VARCHAR" property="headImage" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="quit" jdbcType="BOOLEAN" property="quit" />
+    <result column="quit_time" jdbcType="TIMESTAMP" property="quitTime" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, group_id, user_id, alias_name, head_image, remark, quit, quit_time, created_time
+  </sql>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.james.platform.pojo.entity.GroupMember" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_group_member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="aliasName != null">
+        alias_name,
+      </if>
+      <if test="headImage != null">
+        head_image,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="quit != null">
+        quit,
+      </if>
+      <if test="quitTime != null">
+        quit_time,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="aliasName != null">
+        #{aliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null">
+        #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="quit != null">
+        #{quit,jdbcType=BOOLEAN},
+      </if>
+      <if test="quitTime != null">
+        #{quitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.james.platform.pojo.entity.GroupMember">
+    <!--@mbg.generated-->
+    update t_group_member
+    <set>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="aliasName != null">
+        alias_name = #{aliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null">
+        head_image = #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="quit != null">
+        quit = #{quit,jdbcType=BOOLEAN},
+      </if>
+      <if test="quitTime != null">
+        quit_time = #{quitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

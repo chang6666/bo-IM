@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.james.platform.mapper.PrivateMessageMapper">
+  <resultMap id="BaseResultMap" type="com.james.platform.pojo.entity.PrivateMessage">
+    <!--@mbg.generated-->
+    <!--@Table t_private_message-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="send_id" jdbcType="BIGINT" property="sendId" />
+    <result column="recv_id" jdbcType="BIGINT" property="recvId" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="type" jdbcType="BOOLEAN" property="type" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, send_id, recv_id, content, `type`, `status`, send_time
+  </sql>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.james.platform.pojo.entity.PrivateMessage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_private_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sendId != null">
+        send_id,
+      </if>
+      <if test="recvId != null">
+        recv_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="sendTime != null">
+        send_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sendId != null">
+        #{sendId,jdbcType=BIGINT},
+      </if>
+      <if test="recvId != null">
+        #{recvId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.james.platform.pojo.entity.PrivateMessage">
+    <!--@mbg.generated-->
+    update t_private_message
+    <set>
+      <if test="sendId != null">
+        send_id = #{sendId,jdbcType=BIGINT},
+      </if>
+      <if test="recvId != null">
+        recv_id = #{recvId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="sendTime != null">
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

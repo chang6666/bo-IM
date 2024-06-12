@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.james.platform.mapper.GroupMessageMapper">
+  <resultMap id="BaseResultMap" type="com.james.platform.pojo.entity.GroupMessage">
+    <!--@mbg.generated-->
+    <!--@Table t_group_message-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="group_id" jdbcType="BIGINT" property="groupId" />
+    <result column="send_id" jdbcType="BIGINT" property="sendId" />
+    <result column="send_nick_name" jdbcType="VARCHAR" property="sendNickName" />
+    <result column="recv_ids" jdbcType="VARCHAR" property="recvIds" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="at_user_ids" jdbcType="VARCHAR" property="atUserIds" />
+    <result column="receipt" jdbcType="TINYINT" property="receipt" />
+    <result column="receipt_ok" jdbcType="TINYINT" property="receiptOk" />
+    <result column="type" jdbcType="BOOLEAN" property="type" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, group_id, send_id, send_nick_name, recv_ids, content, at_user_ids, receipt, receipt_ok, 
+    `type`, `status`, send_time
+  </sql>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.james.platform.pojo.entity.GroupMessage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_group_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="sendId != null">
+        send_id,
+      </if>
+      <if test="sendNickName != null">
+        send_nick_name,
+      </if>
+      <if test="recvIds != null">
+        recv_ids,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="atUserIds != null">
+        at_user_ids,
+      </if>
+      <if test="receipt != null">
+        receipt,
+      </if>
+      <if test="receiptOk != null">
+        receipt_ok,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="sendTime != null">
+        send_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="sendId != null">
+        #{sendId,jdbcType=BIGINT},
+      </if>
+      <if test="sendNickName != null">
+        #{sendNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="recvIds != null">
+        #{recvIds,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="atUserIds != null">
+        #{atUserIds,jdbcType=VARCHAR},
+      </if>
+      <if test="receipt != null">
+        #{receipt,jdbcType=TINYINT},
+      </if>
+      <if test="receiptOk != null">
+        #{receiptOk,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.james.platform.pojo.entity.GroupMessage">
+    <!--@mbg.generated-->
+    update t_group_message
+    <set>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="sendId != null">
+        send_id = #{sendId,jdbcType=BIGINT},
+      </if>
+      <if test="sendNickName != null">
+        send_nick_name = #{sendNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="recvIds != null">
+        recv_ids = #{recvIds,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="atUserIds != null">
+        at_user_ids = #{atUserIds,jdbcType=VARCHAR},
+      </if>
+      <if test="receipt != null">
+        receipt = #{receipt,jdbcType=TINYINT},
+      </if>
+      <if test="receiptOk != null">
+        receipt_ok = #{receiptOk,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="sendTime != null">
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
