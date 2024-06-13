@@ -21,19 +21,15 @@ import lombok.AllArgsConstructor;
 public enum MessageStatus {
 
     UNSEND(0, "未送达"),
-    SEND(1, "已送达"),
+    SENDED(1, "已送达"),
     RECALL(2, "撤回"),
     READED(3,"已读");
 
 
-    private final Integer code;
+    public final Integer code;
 
-    private final String desc;
+    public final String desc;
 
-
-    public  Integer getCode() {
-        return code;
-    }
 
     public static String getDesc(Integer code) {
         String desc = new String();
@@ -41,7 +37,7 @@ public enum MessageStatus {
             return desc;
         }
         for (int i = 0; i < MessageStatus.values().length; i++) {
-            if (code.equals(MessageStatus.values()[i].getCode())) {
+            if (code.equals(MessageStatus.values()[i].code)) {
                 desc = MessageStatus.values()[i].desc;
                 break;
             }
@@ -49,4 +45,7 @@ public enum MessageStatus {
         return desc;
     }
 
+    public Integer code() {
+        return this.code;
+    }
 }

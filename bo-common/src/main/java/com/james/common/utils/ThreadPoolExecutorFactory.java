@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @description: 创建单例线程池
  * @author james
  */
-public final class ThreadPoolExecutorFactor {
+public final class ThreadPoolExecutorFactory {
 
     /**
      * 机器的CPU核数: Runtime.getRuntime().availableProcessors()
@@ -51,10 +51,10 @@ public final class ThreadPoolExecutorFactor {
 
     private static volatile ThreadPoolExecutor threadPoolExecutor = null;
 
-    private ThreadPoolExecutorFactor()
+    private ThreadPoolExecutorFactory()
     {
         if (null == threadPoolExecutor) {
-            threadPoolExecutor = ThreadPoolExecutorFactor.getThreadPoolExecutor();
+            threadPoolExecutor = ThreadPoolExecutorFactory.getThreadPoolExecutor();
         }
     }
 
@@ -63,7 +63,7 @@ public final class ThreadPoolExecutorFactor {
      * @return
      */
     private Object readResolve() {
-        return ThreadPoolExecutorFactor.getThreadPoolExecutor();
+        return ThreadPoolExecutorFactory.getThreadPoolExecutor();
     }
     
 
@@ -71,7 +71,7 @@ public final class ThreadPoolExecutorFactor {
     public static ThreadPoolExecutor getThreadPoolExecutor()
     {
         if (null == threadPoolExecutor) {
-            synchronized (ThreadPoolExecutorFactor.class) {
+            synchronized (ThreadPoolExecutorFactory.class) {
                 if (null == threadPoolExecutor) {
                     threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,
                             TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>(QUEUE_SIZE),

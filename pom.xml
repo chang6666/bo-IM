@@ -29,6 +29,7 @@ limitations under the License.
     <module>bo-common</module>
     <module>bo-platform</module>
     <module>bo-server</module>
+    <module>bo-client</module>
   </modules>
 
   <name>bo_im</name>

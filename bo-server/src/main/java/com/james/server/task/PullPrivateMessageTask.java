@@ -15,8 +15,6 @@
  */
 package com.james.server.task;
 
-import java.util.Objects;
-
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -49,7 +47,7 @@ public class PullPrivateMessageTask extends AbstractPullMessageTask {
         String key = String.join(":", IMRedisKey.IM_MESSAGE_PRIVATE_QUEUE, IMServerGroup.SERVER_ID + "");
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode json = objectMapper.valueToTree(redisTemplate.opsForList().leftPop(key));
-        while (json.fields().hasNext()) {
+        while (json.size() > 0) {
             IMRecvInfo recvInfo = new IMRecvInfo();
             try {
                 recvInfo = objectMapper.treeToValue(json, IMRecvInfo.class);
