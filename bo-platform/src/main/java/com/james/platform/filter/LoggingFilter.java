@@ -117,7 +117,7 @@ public class LoggingFilter extends OncePerRequestFilter {
             Enumeration<String> parameterNames = request.getParameterNames();
             while (parameterNames.hasMoreElements()) {
                 String parameterName = parameterNames.nextElement();
-                String maskSensitiveData = LogMaskingUtil.maskSensitiveData(parameterName,request.getParameter(parameterName));
+                String maskSensitiveData = LogMaskingUtil.maskSensitiveData(parameterName,request.getParameter(parameterName),false);
                 logger.info("trace_id: {}, Parameter: {} = {}", traceId, parameterName,
                         maskSensitiveData);
             }

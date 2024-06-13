@@ -13,25 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.platform;
+package com.james.common.model;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author james
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@MapperScan("com.james.platform.mapper")
-public class PlatformApplication {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class IMUserInfo {
 
+    /**
+     * 用户id
+     */
+    private Long id;
 
-    public static void main(String[] args) {
-        SpringApplication.run(PlatformApplication.class, args);
-        
-    }
+    /**
+     * 用户终端类型 IMTerminalType
+     */
+    private Integer terminal;
 
-   
 }

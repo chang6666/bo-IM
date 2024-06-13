@@ -13,25 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.platform;
+package com.james.server.netty.processor;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import io.netty.channel.ChannelHandlerContext;
 
 /**
  * @author james
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@MapperScan("com.james.platform.mapper")
-public class PlatformApplication {
+public abstract class AbstractMessageProcessor<T> {
 
-
-    public static void main(String[] args) {
-        SpringApplication.run(PlatformApplication.class, args);
-        
+    public void process(ChannelHandlerContext ctx, T data) {
     }
 
-   
+    public void process(T data) {
+    }
+
+    public T transForm(Object o) {
+        return (T) o;
+    }
+
 }

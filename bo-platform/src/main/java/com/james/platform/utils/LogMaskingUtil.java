@@ -20,41 +20,41 @@ import java.util.regex.Pattern;
 
 /**
  * 日志脱敏工具
+ * 
  * @author James
  */
 public class LogMaskingUtil {
 
-    //邮箱
+    // 邮箱
     private static final Pattern EMAIL_PATTERN = Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+");
-    //  手机
+    // 手机
     private static final Pattern PHONE_PATTERN = Pattern.compile("\\b(\\d{3})\\d{4}(\\d{4})\\b");
-    //身份证
+    // 身份证
     private static final Pattern ID_PATTERN = Pattern.compile("\\b(\\d{6})\\d{8}(\\d{4})\\b");
-    //姓名
-    private static final Pattern NAME_PATTERN = Pattern.compile("[\\u4e00-\\u9fa5]{2,}", Pattern.CASE_INSENSITIVE);
-    //密码
+    // 姓名
+    private static final Pattern NAME_PATTERN = Pattern.compile("[\\u4e00-\\u9fa5]{2,}");
+    // 密码
     private static final Pattern PASSWORD_PATTERN = Pattern.compile("(?<=.{2}).(?=.*.{2})");
-    //车牌
+    // 车牌
     private static final Pattern PLATE_PATTERN = Pattern.compile("[\\u4e00-\\u9fa5]{1}[A-Z0-9]{6}");
-    //银行卡
+    // 银行卡
     private static final Pattern BANK_CARD_PATTERN = Pattern.compile("\\b(\\d{4})\\d{12}(\\d{4})\\b");
     // 座机
     private static final Pattern LANDLINE_PATTERN = Pattern.compile("\\b(\\d{3,4}-)?\\d{7,8}\\b");
     // 地址
     private static final Pattern ADDRESS_PATTERN = Pattern.compile(".{5,}(?=.{4})");
 
-
-    public static String maskSensitiveData(String name,String data,Boolean isMask) {
+    public static String maskSensitiveData(String name, String data, Boolean isMask) {
         if (data == null) {
             return null;
         }
         Pattern pattern;
-        pattern =  Pattern.compile("email", Pattern.CASE_INSENSITIVE);
+        pattern = Pattern.compile("email", Pattern.CASE_INSENSITIVE);
         Matcher matcher;
         matcher = pattern.matcher(name);
-       if (matcher.find()) {
-           data = EMAIL_PATTERN.matcher(data).replaceAll("***@***.com");
-           return data;
+        if (matcher.find()) {
+            data = EMAIL_PATTERN.matcher(data).replaceAll("***@***.com");
+            return data;
         }
         pattern = Pattern.compile("phone", Pattern.CASE_INSENSITIVE);
         matcher = pattern.matcher(name);
@@ -112,7 +112,6 @@ public class LogMaskingUtil {
         return data;
     }
 
-
     public static String maskSensitiveData(String name, String data) {
         if (data == null) {
             return null;
@@ -139,12 +138,6 @@ public class LogMaskingUtil {
             default:
                 return data;
         }
-    }
-
-
-    public static void main(String[] args) {
-        String maskSensitiveData = maskSensitiveData("CnbcnsiPASSWORD", "Cnbaisj1314.", false);
-        System.out.println(maskSensitiveData);
     }
 
 }

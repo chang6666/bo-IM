@@ -15,38 +15,51 @@
  */
 package com.james.common.enums;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import lombok.AllArgsConstructor;
 
+/**
+ * 终端类型
+ * @author james
+ */
 @AllArgsConstructor
-public enum MessageStatus {
+public enum IMTerminalType {
 
-    UNSEND(0, "未送达"),
-    SEND(1, "已送达"),
-    RECALL(2, "撤回"),
-    READED(3,"已读");
-
+    /**
+     * web
+     */
+    WEB(0, "web"),
+    /**
+     * app
+     */
+    APP(1, "app"),
+    /**
+     * pc
+     */
+    PC(2, "pc");
 
     private final Integer code;
 
     private final String desc;
 
-
-    public  Integer getCode() {
-        return code;
-    }
-
-    public static String getDesc(Integer code) {
-        String desc = new String();
-        if (code == null) {
-            return desc;
-        }
-        for (int i = 0; i < MessageStatus.values().length; i++) {
-            if (code.equals(MessageStatus.values()[i].getCode())) {
-                desc = MessageStatus.values()[i].desc;
-                break;
+    public static IMTerminalType fromCode(Integer code) {
+        for (IMTerminalType typeEnum : values()) {
+            if (typeEnum.code.equals(code)) {
+                return typeEnum;
             }
         }
-        return desc;
+        return null;
+    }
+
+    public static List<Integer> codes() {
+        return Arrays.stream(values()).map(IMTerminalType::code).collect(Collectors.toList());
+    }
+
+    public Integer code() {
+        return this.code;
     }
 
 }

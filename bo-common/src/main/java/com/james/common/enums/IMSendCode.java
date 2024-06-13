@@ -17,36 +17,34 @@ package com.james.common.enums;
 
 import lombok.AllArgsConstructor;
 
+/**
+ * @author james
+ */
 @AllArgsConstructor
-public enum MessageStatus {
+public enum IMSendCode {
 
-    UNSEND(0, "未送达"),
-    SEND(1, "已送达"),
-    RECALL(2, "撤回"),
-    READED(3,"已读");
-
+    /**
+     * 发送成功
+     */
+    SUCCESS(0, "发送成功"),
+    /**
+     * 对方当前不在线
+     */
+    NOT_ONLINE(1, "对方当前不在线"),
+    /**
+     * 未找到对方的channel
+     */
+    NOT_FIND_CHANNEL(2, "未找到对方的channel"),
+    /**
+     * 未知异常
+     */
+    UNKONW_ERROR(9999, "未知异常");
 
     private final Integer code;
-
     private final String desc;
 
-
-    public  Integer getCode() {
-        return code;
-    }
-
-    public static String getDesc(Integer code) {
-        String desc = new String();
-        if (code == null) {
-            return desc;
-        }
-        for (int i = 0; i < MessageStatus.values().length; i++) {
-            if (code.equals(MessageStatus.values()[i].getCode())) {
-                desc = MessageStatus.values()[i].desc;
-                break;
-            }
-        }
-        return desc;
+    public Integer code() {
+        return this.code;
     }
 
 }

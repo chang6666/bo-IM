@@ -13,25 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.platform;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+package com.james.server.netty;
 
 /**
  * @author james
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@MapperScan("com.james.platform.mapper")
-public class PlatformApplication {
+public interface IMServer {
 
+    boolean isReady();
 
-    public static void main(String[] args) {
-        SpringApplication.run(PlatformApplication.class, args);
-        
-    }
+    void start();
 
-   
+    void stop();
 }

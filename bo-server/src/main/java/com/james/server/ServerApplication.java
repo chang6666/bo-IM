@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.platform;
+package com.james.server;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * @author james
+ * @author James
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@MapperScan("com.james.platform.mapper")
-public class PlatformApplication {
-
+@SpringBootApplication
+@ComponentScan(basePackages = { "com.james"})
+@EnableAsync
+@EnableScheduling
+public class ServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PlatformApplication.class, args);
-        
+        SpringApplication.run(ServerApplication.class, args);
     }
 
-   
 }

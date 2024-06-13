@@ -13,25 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.platform;
-
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+package com.james.common.constant;
 
 /**
  * @author james
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@MapperScan("com.james.platform.mapper")
-public class PlatformApplication {
+public class IMConstant {
 
-
-    public static void main(String[] args) {
-        SpringApplication.run(PlatformApplication.class, args);
-        
+    private IMConstant() {
     }
 
-   
+    /**
+     * 在线状态过期时间 600s
+     */
+    public static final long ONLINE_TIMEOUT_SECOND = 600;
+    /**
+     * 消息允许撤回时间 300s
+     */
+    public static final long ALLOW_RECALL_SECOND = 300;
 }

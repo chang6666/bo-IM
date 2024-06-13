@@ -13,25 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.james.platform;
+package com.james.common.model;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import lombok.Data;
 
 /**
  * @author james
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@MapperScan("com.james.platform.mapper")
-public class PlatformApplication {
+@Data
+public class IMSendResult<T> {
 
+    /**
+     * 发送方
+     */
+    private IMUserInfo sender;
 
-    public static void main(String[] args) {
-        SpringApplication.run(PlatformApplication.class, args);
-        
-    }
+    /**
+     * 接收方
+     */
+    private IMUserInfo receiver;
 
-   
+    /**
+     * 发送状态 IMCmdType
+     */
+    private Integer code;
+
+    /**
+     * 消息内容
+     */
+    private T data;
+
 }

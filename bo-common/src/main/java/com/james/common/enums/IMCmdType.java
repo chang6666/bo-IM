@@ -17,36 +17,49 @@ package com.james.common.enums;
 
 import lombok.AllArgsConstructor;
 
+/**
+ * @author james
+ * @date 2020/4/16
+ */
 @AllArgsConstructor
-public enum MessageStatus {
+public enum IMCmdType {
 
-    UNSEND(0, "未送达"),
-    SEND(1, "已送达"),
-    RECALL(2, "撤回"),
-    READED(3,"已读");
-
+    /**
+     * 登陆
+     */
+    LOGIN(0, "登陆"),
+    /**
+     * 心跳
+     */
+    HEART_BEAT(1, "心跳"),
+    /**
+     * 强制下线
+     */
+    FORCE_LOGUT(2, "强制下线"),
+    /**
+     * 私聊消息
+     */
+    PRIVATE_MESSAGE(3, "私聊消息"),
+    /**
+     * 群发消息
+     */
+    GROUP_MESSAGE(4, "群发消息");
 
     private final Integer code;
 
     private final String desc;
 
-
-    public  Integer getCode() {
-        return code;
-    }
-
-    public static String getDesc(Integer code) {
-        String desc = new String();
-        if (code == null) {
-            return desc;
-        }
-        for (int i = 0; i < MessageStatus.values().length; i++) {
-            if (code.equals(MessageStatus.values()[i].getCode())) {
-                desc = MessageStatus.values()[i].desc;
-                break;
+    public static IMCmdType fromCode(Integer code) {
+        for (IMCmdType typeEnum : values()) {
+            if (typeEnum.code.equals(code)) {
+                return typeEnum;
             }
         }
-        return desc;
+        return null;
+    }
+
+    public Integer code() {
+        return this.code;
     }
 
 }
