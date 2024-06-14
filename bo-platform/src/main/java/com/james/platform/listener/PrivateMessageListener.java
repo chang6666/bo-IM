@@ -4,29 +4,33 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.james.platform.pojo.vo.PrivateMessageVO;
-import com.mysql.cj.protocol.MessageListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.james.client.annotation.IMListener;
+import com.james.client.listener.MessageListener;
 import com.james.common.enums.IMListenerType;
 import com.james.common.enums.IMSendCode;
 import com.james.common.enums.MessageStatus;
 import com.james.common.model.IMSendResult;
 import com.james.platform.pojo.entity.PrivateMessage;
+import com.james.platform.pojo.vo.PrivateMessageVO;
+import com.james.platform.service.PrivateMessageService;
 
 import cn.hutool.core.collection.CollUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Lazy;
 
+/**
+ * @author james
+ */
 @Slf4j
 @IMListener(type = IMListenerType.PRIVATE_MESSAGE)
 public class PrivateMessageListener implements MessageListener<PrivateMessageVO> {
     
     @Lazy
     @Autowired
-    private IPrivateMessageService privateMessageService;
+    private PrivateMessageService privateMessageService;
 
     @Override
     public void process(List<IMSendResult> results) {

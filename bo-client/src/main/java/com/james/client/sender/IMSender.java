@@ -49,7 +49,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class IMSender {
 
-     @Resource(name="IMRedisTemplate")
+     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
     @Value("${spring.application.name}")

@@ -41,7 +41,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GroupMessageResultResultTask extends AbstractMessageResultTask {
 
-    @Resource(name = "IMRedisTemplate")
+    @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
     @Value("${spring.application.name}")

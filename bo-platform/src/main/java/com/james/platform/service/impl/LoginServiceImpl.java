@@ -17,6 +17,9 @@ package com.james.platform.service.impl;
 
 import java.util.Objects;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +51,8 @@ public class LoginServiceImpl extends ServiceImpl<UserMapper, User> implements L
     private final PasswordEncoder passwordEncoder;
 
     private final JwtProperties jwtProperties;
+
+    private final RedisTemplate redisTemplate;
     
     @Override
     public Result login(final LoginDto dto) {

@@ -14,6 +14,9 @@ import java.util.Map;
 import org.apache.commons.lang3.CharUtils;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * @author james
+ */
 @Slf4j
 @Component
 @NoArgsConstructor
@@ -81,7 +84,7 @@ public final class SensitiveFilterUtil {
                 // 添加到前缀树
                 this.addKeyword(keyword);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("加载敏感词文件失败: " + e.getMessage());
         }
     }

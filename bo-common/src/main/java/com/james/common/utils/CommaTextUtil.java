@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * @date: 2023-11-09 09:52:49
  * @version: 1.0
  */
-public class CommaTextUtils {
+public class CommaTextUtil {
 
     /**
      * 文本转列表

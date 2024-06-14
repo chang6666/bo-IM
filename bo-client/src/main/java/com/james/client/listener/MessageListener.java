@@ -22,7 +22,7 @@ import com.james.common.model.IMSendResult;
 /**
  * @author james
  */
-public interface MessageListener {
+public interface MessageListener<T> {
 
     void process(List<IMSendResult> result);
     

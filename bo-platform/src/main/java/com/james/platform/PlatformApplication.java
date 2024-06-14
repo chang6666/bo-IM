@@ -19,12 +19,14 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author james
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @MapperScan("com.james.platform.mapper")
+@ComponentScan("com.james")
 public class PlatformApplication {
 
 

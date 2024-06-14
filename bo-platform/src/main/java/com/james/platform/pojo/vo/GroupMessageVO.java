@@ -4,12 +4,16 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import com.james.common.serializer.DateToLongSerializer;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class GroupMessageVO {
 
     @Schema(description= "消息id")

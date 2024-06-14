@@ -43,7 +43,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class PrivateMessageResultResultTask extends AbstractMessageResultTask {
 
-    @Resource(name = "IMRedisTemplate")
+    @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
     @Value("${spring.application.name}")
